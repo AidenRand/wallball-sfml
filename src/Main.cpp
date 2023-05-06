@@ -23,8 +23,7 @@ int main()
 		window.clear();
 		dt = clock.restart().asSeconds();
 		paddle.drawTo(window);
-		paddle.update();
-		std::cout << dt << "\n";
+		paddle.update(dt);
 		window.display();
 	}
 	return 0;
