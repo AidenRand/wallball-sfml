@@ -12,3 +12,16 @@ void Paddle::drawTo(sf::RenderWindow& window)
 {
 	window.draw(paddle);
 }
+
+void Paddle::update()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		direction.x -= step;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		direction.x += step;
+	}
+	paddle.move(direction);
+}
