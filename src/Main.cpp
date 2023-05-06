@@ -1,3 +1,4 @@
+#include "ball.hpp"
 #include "paddle.hpp"
 #include <SFML/Graphics.hpp>
 
@@ -9,6 +10,7 @@ int main()
 	float dt;
 
 	Paddle paddle(50, 10, 350.0, 850.0);
+	Ball ball(10, 7, 350.0, 450.0);
 
 	while (window.isOpen())
 	{
@@ -24,6 +26,7 @@ int main()
 		dt = clock.restart().asSeconds();
 		paddle.drawTo(window);
 		paddle.update(dt);
+		ball.drawTo(window);
 		window.display();
 	}
 	return 0;
