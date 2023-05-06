@@ -1,3 +1,4 @@
+#include "paddle.hpp"
 #include <SFML/Graphics.hpp>
 
 int main()
@@ -6,6 +7,8 @@ int main()
 	window.setFramerateLimit(30);
 	sf::Clock clock;
 	float dt;
+
+	Paddle paddle(50, 10, 350.0, 850.0);
 
 	while (window.isOpen())
 	{
@@ -17,9 +20,10 @@ int main()
 				window.close();
 			}
 		}
-		dt = clock.restart().asSeconds();
-		std::cout << dt << "\n";
 		window.clear();
+		dt = clock.restart().asSeconds();
+		paddle.drawTo(window);
+		std::cout << dt << "\n";
 		window.display();
 	}
 	return 0;
