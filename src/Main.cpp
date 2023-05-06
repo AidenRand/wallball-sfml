@@ -9,6 +9,8 @@ int main()
 	sf::Clock clock;
 	float dt;
 
+	std::srand(time(NULL));
+
 	Paddle paddle(50, 10, 350.0, 850.0);
 	Ball ball(10, 7, 350.0, 450.0);
 
@@ -27,6 +29,7 @@ int main()
 		paddle.drawTo(window);
 		paddle.update(dt);
 		ball.drawTo(window);
+		ball.moveBall();
 		window.display();
 	}
 	return 0;
