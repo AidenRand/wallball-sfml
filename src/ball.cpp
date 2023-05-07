@@ -14,19 +14,20 @@ void Ball::drawTo(sf::RenderWindow& window)
 	window.draw(ball);
 }
 
-void Ball::moveBall()
+void Ball::moveBall(float dt)
 {
 	velocity.x = step_x * cos(random_angle * M_PI / 180);
 	velocity.y = step_y * sin(random_angle * M_PI / 180);
-	ball.move(velocity);
+	ball.move(velocity * dt);
 }
 
-void Ball::collision(Paddle& paddle_rect)
+void Ball::collision(Paddle& paddle_rect, int& score)
 {
 	// If ball hits paddle reverse y direction
 	auto paddle = paddle_rect.paddle;
 	if (ball.getGlobalBounds().intersects(paddle.getGlobalBounds()))
 	{
+		score += 1;
 		step_y *= -1;
 		ball.setPosition(ball.getPosition().x, paddle.getPosition().y - 10);
 	}
@@ -45,4 +46,24 @@ void Ball::collision(Paddle& paddle_rect)
 	{
 		step_y *= -1;
 	}
+	else if (ball.getPosition().y >= 904)
+	{
+		is_dead = true;
+	}
+}
+
+void Ball::reset(int& lives_left)
+{
+	if (is_dead)
+	{
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		{
+			random_angle = rand() % (225 - 320 + 1);
+			velocity.x = step_x * cos(random_angle * M_PI / 180);
+			velocity.y = step_y * sin(random_angle * M_PI / 180);
+			ball.setPosition(350.0, 450.0);
+			lives_left -= 1;
+		}
+	}
+	is_dead = false;
 }

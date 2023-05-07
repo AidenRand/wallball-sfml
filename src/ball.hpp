@@ -9,14 +9,16 @@ class Ball
 public:
 	Ball(int width, int height, float x, float y);
 	void drawTo(sf::RenderWindow& window);
-	void moveBall();
-	void collision(Paddle& paddle_rect);
+	void moveBall(float dt);
+	void collision(Paddle& paddle_rect, int& score);
+	void reset(int& lives_left);
 
 private:
 	sf::RectangleShape ball;
 	sf::Vector2f velocity;
-	float step_x = 5;
-	float step_y = 5;
+	bool is_dead = false;
+	float step_x = 500;
+	float step_y = 500;
 	float random_angle = rand() % (225 - 360 + 1);
 };
 

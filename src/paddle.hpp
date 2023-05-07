@@ -12,7 +12,7 @@ public:
 	sf::RectangleShape paddle;
 
 private:
-	float step = 500;
+	float step = 700;
 };
 
 #endif

@@ -1,4 +1,5 @@
 #include "ball.hpp"
+#include "game.hpp"
 #include "paddle.hpp"
 #include <SFML/Graphics.hpp>
 
@@ -8,6 +9,9 @@ int main()
 	window.setFramerateLimit(60);
 	sf::Clock clock;
 	float dt;
+
+	int lives_left = 5;
+	int score = 0;
 
 	std::srand(time(NULL));
 
@@ -26,11 +30,15 @@ int main()
 		}
 		window.clear();
 		dt = clock.restart().asSeconds();
+		Game game(lives_left, 650, 30, score, 50, 30);
+		game.drawTo(window);
 		paddle.drawTo(window);
 		paddle.update(dt);
 		ball.drawTo(window);
-		ball.moveBall();
-		ball.collision(paddle);
+		ball.moveBall(dt);
+		ball.collision(paddle, score);
+		ball.reset(lives_left);
+		std::cout << lives_left << "\n";
 		window.display();
 	}
 	return 0;
