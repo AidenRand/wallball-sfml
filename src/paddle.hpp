@@ -9,9 +9,9 @@ public:
 	Paddle(int width, int height, float x, float y);
 	void drawTo(sf::RenderWindow& window);
 	void update(float dt);
+	sf::RectangleShape paddle;
 
 private:
-	sf::RectangleShape paddle;
 	float step = 500;
 };
 

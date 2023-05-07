@@ -5,7 +5,7 @@
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(700, 900), "Wallball");
-	window.setFramerateLimit(30);
+	window.setFramerateLimit(60);
 	sf::Clock clock;
 	float dt;
 
@@ -30,6 +30,7 @@ int main()
 		paddle.update(dt);
 		ball.drawTo(window);
 		ball.moveBall();
+		ball.collision(paddle);
 		window.display();
 	}
 	return 0;

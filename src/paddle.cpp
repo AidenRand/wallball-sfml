@@ -15,10 +15,12 @@ void Paddle::drawTo(sf::RenderWindow& window)
 
 void Paddle::update(float dt)
 {
+	// Move paddle if left or right arrow key is pressed
 	sf::Vector2f direction;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		direction.x -= step;
+		// Don't allow paddle to move past x = 30
 		if (paddle.getPosition().x <= 30)
 		{
 			direction.x += step;
@@ -27,6 +29,7 @@ void Paddle::update(float dt)
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
 		direction.x += step;
+		// Don't allow paddle to move past x = 672
 		if (paddle.getPosition().x >= 672)
 		{
 			direction.x -= step;
