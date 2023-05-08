@@ -16,6 +16,7 @@ void Ball::drawTo(sf::RenderWindow& window)
 
 void Ball::moveBall(float dt)
 {
+
 	velocity.x = step_x * cos(random_angle * M_PI / 180);
 	velocity.y = step_y * sin(random_angle * M_PI / 180);
 	ball.move(velocity * dt);

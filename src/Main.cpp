@@ -28,7 +28,7 @@ int main()
 				window.close();
 			}
 		}
-		window.clear();
+		window.clear(sf::Color(5, 5, 5));
 		dt = clock.restart().asSeconds();
 		Game game(lives_left, 650, 30, score, 50, 30);
 		game.drawTo(window);

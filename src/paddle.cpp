@@ -2,6 +2,7 @@
 
 Paddle::Paddle(int width, int height, float x, float y)
 {
+	// Create paddle
 	paddle.setSize(sf::Vector2f(width, height));
 	paddle.setFillColor(sf::Color(200, 200, 200));
 	paddle.setPosition(sf::Vector2f(x, y));
