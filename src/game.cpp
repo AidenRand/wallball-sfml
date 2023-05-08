@@ -32,3 +32,17 @@ void Game::drawTo(sf::RenderWindow& window)
 	score.setFillColor(sf::Color(200, 200, 200));
 	window.draw(score);
 }
+
+void Game::endGame(bool& game_ended, int& lives_left, sf::RenderWindow& window)
+{
+	if (lives_left == 0)
+	{
+		game_ended = true;
+		end_text.setFont(font);
+		end_text.setCharacterSize(30);
+		end_text.setPosition(sf::Vector2f(150, 450));
+		end_text.setString("PRESS SPACE TO PLAY AGAIN");
+		end_text.setFillColor(sf::Color(200, 200, 200));
+		window.draw(end_text);
+	}
+}

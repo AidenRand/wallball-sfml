@@ -55,16 +55,19 @@ void Ball::collision(Paddle& paddle_rect, int& score)
 
 void Ball::reset(int& lives_left)
 {
-	if (is_dead)
+	if (lives_left != 0)
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		if (is_dead)
 		{
-			random_angle = rand() % (225 - 320 + 1);
-			velocity.x = step_x * cos(random_angle * M_PI / 180);
-			velocity.y = step_y * sin(random_angle * M_PI / 180);
-			ball.setPosition(350.0, 450.0);
-			lives_left -= 1;
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+			{
+				random_angle = rand() % (225 - 320 + 1);
+				velocity.x = step_x * cos(random_angle * M_PI / 180);
+				velocity.y = step_y * sin(random_angle * M_PI / 180);
+				ball.setPosition(350.0, 450.0);
+				lives_left -= 1;
+			}
 		}
+		is_dead = false;
 	}
-	is_dead = false;
 }
